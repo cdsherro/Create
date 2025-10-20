@@ -62,7 +62,7 @@ body {
 .transactions-container {
   flex: 1;
   max-height: 800px;
-  /* overflow-y: auto;  enables scrolling if too long */
+  /* overflow-y: auto;  to enable scrolling if too long */
   background-color: #fff;
   padding: 15px;
   border-radius: 10px;

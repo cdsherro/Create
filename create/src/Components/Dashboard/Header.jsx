@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../Assets/budget app figma logo.png';
+import logo from '../Assets/budget_app_figma_logo.png';
 import './Header.css';
 
 export default function Header() {

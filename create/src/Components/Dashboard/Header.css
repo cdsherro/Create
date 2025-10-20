@@ -41,12 +41,10 @@
   transform: scale(1.05);
 }
 
-/* User Icon Link */
 .user-icon-link {
   text-decoration: none;
 }
 
-/* User Icon Circle */
 .user-icon {
   width: 45px;
   height: 45px;
