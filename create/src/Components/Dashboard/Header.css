@@ -1,0 +1,69 @@
+/* Header Container */
+.header {
+  background-color: #A8FFD5;
+  padding: 10px 20px;
+  border-bottom: 2px solid #000;
+}
+
+/* Logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.bank-logo {
+  width: 100px;
+  height: auto;
+}
+
+/* Right Section (Dashboard + Icon) */
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+/* Dashboard Button */
+.dashboard-btn {
+  background-color: #d9fef5;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  margin-right: 15px;
+  transition: all 0.3s ease;
+}
+
+.dashboard-btn:hover {
+  background-color: #aefbec;
+  transform: scale(1.05);
+}
+
+/* User Icon Link */
+.user-icon-link {
+  text-decoration: none;
+}
+
+/* User Icon Circle */
+.user-icon {
+  width: 45px;
+  height: 45px;
+  background-color: #000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.user-icon i {
+  color: #b8fff4;
+  font-size: 26px;
+}
+
+.user-icon:hover {
+  transform: scale(1.1);
+  background-color: #1a1a1a;
+}
