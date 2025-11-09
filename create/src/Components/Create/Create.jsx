@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate }  from "react-router-dom";
 import "./Create.css";
 
 import email_icon from '../Assets/email.jpg'
@@ -6,11 +7,15 @@ import password_icon from '../Assets/password.png'
 import budget_icon from '../Assets/budget.png'
 
 const Create = () => {
+    const navigate = useNavigate();
+
+    const handleSubmit = () => {
+        navigate("/dashboard"); //later to verify from backend
+    };
+
     return (
 
         <div className="auth"> 
-
-            
             <aside className="auth-media">   
                 <img src={budget_icon} alt="Welcome" />
             </aside>
@@ -43,7 +48,9 @@ const Create = () => {
                 </div>
 
                 <div className="submit-container">
-                    <button className="submit" type="button">Submit</button>
+                    <button className="submit" type="button" onClick={handleSubmit}>
+                        Submit
+                    </button>
 
                     <div className="register group">
                         <span className="hint">Don't have an account?</span>
@@ -59,8 +66,5 @@ const Create = () => {
         </div>
     );
 };
-
-        
-
 
 export default Create;

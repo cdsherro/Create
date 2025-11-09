@@ -14,7 +14,7 @@ export default function Header() {
 
         {/* Right: Buttons */}
         <div className="right-section">
-          <Link to="/" className="dashboard-btn">
+          <Link to="/dashboard" className="dashboard-btn">
             Dashboard
           </Link>
 
