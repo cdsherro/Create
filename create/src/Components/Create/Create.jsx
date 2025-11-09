@@ -13,6 +13,10 @@ const Create = () => {
         navigate("/dashboard"); //later to verify from backend
     };
 
+    const handleRegister = () => {
+        navigate("/register"); 
+    };
+
     return (
 
         <div className="auth"> 
@@ -54,7 +58,9 @@ const Create = () => {
 
                     <div className="register group">
                         <span className="hint">Don't have an account?</span>
-                        <button className="register-btn" type="button">Register</button>
+                        <button className="register-btn" type="button" onClick={handleRegister}>
+                            Register
+                        </button>
                     </div>
                 </div>
             </div>
