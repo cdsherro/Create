@@ -38,7 +38,7 @@
 
 .form-row {
   display: flex;
-  gap: 20px;
+  gap: 40px;
   margin-bottom: 15px;
   align-items: center;
 }
@@ -94,4 +94,39 @@
 .register-submit-btn:hover {
   background: #6cc76b;
   color: white;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 240px;
+  max-width: 320px;
+}
+
+.error-message {
+  color: #d93025;
+  background: #ffeaea;
+  border: 1.5px solid #d93025;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  border-radius: 6px;
+  padding: 6px 10px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+  text-align: left;
+}
+
+.error-field {
+  border: 2px solid #d93025 !important;
+  background: #ffeaea;
+}
+
+.required-star {
+  color: #d93025;
+  font-weight: bold;
+  margin-left: 2px;
 }
