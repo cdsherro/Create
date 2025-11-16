@@ -1,12 +1,12 @@
 .register-root {
-  background: #e9fbff;
+  background: #E0FDFF;
   min-height: 100vh;
   padding: 0;
 }
 
 .register-header {
   font-size: 2.3rem;
-  background: #b0fdde;
+  background: #A8FFD5;
   font-family: "Segoe UI", Arial, sans-serif;
   padding: 18px 40px;
   border-bottom: 2px solid #c4ffee;
@@ -51,7 +51,7 @@
   flex: 1;
   padding: 6px 10px;
   border-radius: 5px;
-  border: 1px solid #b0fdde;
+  border: 1px solid #A8FFD5;
   background: #f6fdfd;
   font-size: 1em;
 }
@@ -66,7 +66,7 @@
 
 .register-logo {
   width: 250px;
-  background: #b0fdde;
+  background: #A8FFD5;
   border-radius: 20px;
   box-shadow: 0 3px 10px #ccc;
 }
@@ -82,7 +82,7 @@
   margin-top: 20px;
   width: 160px;
   padding: 10px 0;
-  background: #b0fdde;
+  background: #A8FFD5;
   border: none;
   border-radius: 8px;
   color: #222;
