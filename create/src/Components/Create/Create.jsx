@@ -10,7 +10,7 @@ const Create = () => {
     const navigate = useNavigate();
 
     const handleSubmit = () => {
-        navigate("/dashboard"); //later to verify from backend
+        navigate("/verify"); 
     };
 
     const handleRegister = () => {

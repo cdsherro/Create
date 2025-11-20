@@ -1,89 +1,127 @@
-/* Header Container */
-.header {
-  background-color: #A8FFD5;
-  padding: 10px 20px;
-  border-bottom: 2px solid #000;
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background-color: #16a34a;  
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Logo */
-.logo-container {
+/* logo and text on left side */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.header-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  object-fit: contain;
+  background: #ecfdf3;
+  padding: 4px;
+}
+
+.header-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+/* menu drop down */
+.header-right {
+  position: relative;
   display: flex;
   align-items: center;
 }
 
-.bank-logo {
-  width: 100px;
-  height: auto;
-}
-
-/* Right Section (Dashboard + Icon) */
-.right-section {
-  display: flex;
+/* menu button */
+.menu-toggle {
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+  background: aquamarine;       
+  color: #0f172a;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: inline-flex;
   align-items: center;
+  gap: 6px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  transition:
+    background-color 0.12s ease,
+    transform 0.05s ease,
+    box-shadow 0.12s ease;
+}
+/* menu hover when you click */
+.menu-toggle:hover {
+  background: #5fffd4;          
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+/* menu highlight */
+.menu-toggle:active {
+  background: #16a34a;          
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.35);
 }
 
-/* Dashboard Button */
-.dashboard-btn {
-  background-color: #d9fef5;
-  border: 2px solid #000;
-  border-radius: 8px;
-  padding: 10px 22px;
-  font-weight: bold;
-  font-size: 18px;
-  text-decoration: none;
-  color: black;
-  margin-right: 15px;
-  transition: all 0.3s ease;
+.menu-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.6);
 }
 
-.dashboard-btn:hover {
-  background-color: #aefbec;
-  transform: scale(1.05);
-}
-
-.user-icon-link {
-  text-decoration: none;
-}
-
-.user-icon {
-  width: 45px;
-  height: 45px;
-  background-color: #000;
-  border-radius: 50%;
+/* menu container*/
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 110%;
+  min-width: 190px;
+  margin-top: 6px;
+  padding: 6px;
+  background-color: #14532d;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 1000;
 }
 
-.user-icon i {
-  color: #b8fff4;
-  font-size: 26px;
+/* drop down items*/
+.dropdown-item {
+  width: 100%;
+  text-align: left;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: #E0FDFF;          
+  border: none;
+  color: #0f172a;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background-color 0.12s ease,
+    transform 0.05s ease,
+    box-shadow 0.12s ease;
 }
 
-.user-icon:hover {
-  transform: scale(1.1);
-  background-color: #1a1a1a;
+
+.dropdown-item:hover {
+  background: #d2f3ff;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
 }
 
-.nav-dropdown {
-  margin-right: 25px;
+/* /click  */
+.dropdown-item:active {
+  background: #E0FDFF;
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.35);
 }
 
-.nav-dropdown-btn {
-  background-color: #86FFCC !important;
-  color: #222 !important;
-  font-weight: bold;
-  border-radius: 10px !important;
-  font-size: 1.15em !important;
-  border: 2px solid #000 !important;
-  padding: 8px 30px !important;
-  margin-right: 10px;
-  transition: all 0.3s ease;
-}
-
-.nav-dropdown-btn:hover, .nav-dropdown-btn:focus {
-  background-color: #A8FFD5 !important;
-  color: #000 !important;
-  border-color: #1a1a1a !important;
+/* log out text color */
+.logout-item {
+  color: #ff0000;               
 }

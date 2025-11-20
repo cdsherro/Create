@@ -13,3 +13,79 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* this sections controls every button to do the same thing*/
+
+/* base button look for everything */
+button,
+.btn,
+.btn-primary,
+.btn-success,
+.btn-ghost,
+.income-action-btn,
+.add-transaction,
+.register-submit-btn,
+.settings-actions .btn,
+.settings-actions .btn-primary,
+.settings-actions .btn-ghost {
+  background: aquamarine !important;   
+  border: none !important;
+  border-radius: 12px !important;
+  font-weight: 800 !important;
+  cursor: pointer;
+  font-size: 16px;
+  transition:
+    background-color 0.12s ease,
+    transform 0.05s ease,
+    box-shadow 0.12s ease;
+}
+
+/* hover,brighten,lighten */
+button:hover,
+.btn:hover,
+.btn-primary:hover,
+.btn-success:hover,
+.btn-ghost:hover,
+.income-action-btn:hover,
+.add-transaction:hover,
+.register-submit-btn:hover,
+.settings-actions .btn:hover,
+.settings-actions .btn-primary:hover,
+.settings-actions .btn-ghost:hover {
+  background: #5fffd4 !important;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* effect and highlight*/
+button:active,
+.btn:active,
+.btn-primary:active,
+.btn-success:active,
+.btn-ghost:active,
+.income-action-btn:active,
+.add-transaction:active,
+.register-submit-btn:active,
+.settings-actions .btn:active,
+.settings-actions .btn-primary:active,
+.settings-actions .btn-ghost:active {
+  background: #16a34a !important;      
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.35);
+}
+
+/* keep accessibility, use a green glow */
+button:focus-visible,
+.btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-success:focus-visible,
+.btn-ghost:focus-visible,
+.income-action-btn:focus-visible,
+.add-transaction:focus-visible,
+.register-submit-btn:focus-visible,
+.settings-actions .btn:focus-visible,
+.settings-actions .btn-primary:focus-visible,
+.settings-actions .btn-ghost:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.6);
+}
+
