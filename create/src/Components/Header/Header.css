@@ -1,4 +1,4 @@
-.right-section {
+/* .right-section {
   display: flex;
   align-items: center;
 }
@@ -90,4 +90,123 @@
   max-height: 75px; 
   margin: 0;
   object-fit: contain; 
+} */
+
+
+/* Header Container */
+.header {
+  background-color: #A8FFD5;
+  padding: 10px 20px;
+  border-bottom: 2px solid #000;
+  min-height: 80px;
+  overflow: visible; /* Changed from hidden */
+  position: relative;
+  z-index: 100;
+}
+
+/* Logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  overflow: hidden;   
+  padding: 0;
+}
+
+.bank-logo {
+  width: 170px;      
+  height: auto;
+  max-height: 75px; 
+  margin: 0;
+  object-fit: contain; 
+}
+
+/* Right Section */
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+/* Dashboard Button */
+.dashboard-btn {
+  background-color: #d9fef5;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  margin-right: 15px;
+  transition: all 0.3s ease;
+}
+
+.dashboard-btn:hover {
+  background-color: #aefbec;
+  transform: scale(1.05);
+}
+
+.user-icon-link {
+  text-decoration: none;
+}
+
+.user-icon {
+  width: 45px;
+  height: 45px;
+  background-color: #000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.user-icon i {
+  color: #b8fff4;
+  font-size: 26px;
+}
+
+.user-icon:hover {
+  transform: scale(1.1);
+  background-color: #1a1a1a;
+}
+
+/* Navigation Dropdown */
+.nav-dropdown {
+  margin-right: 25px;
+  position: relative;
+  z-index: 1050;
+}
+
+.nav-dropdown-btn {
+  background-color: #86FFCC !important;
+  color: #222 !important;
+  font-weight: bold;
+  border-radius: 10px !important;
+  font-size: 1.15em !important;
+  border: 2px solid #000 !important;
+  padding: 8px 30px !important;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.nav-dropdown-btn:hover, .nav-dropdown-btn:focus {
+  background-color: #A8FFD5 !important;
+  color: #000 !important;
+  border-color: #1a1a1a !important;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  z-index: 1051 !important;
+}
+
+/* Logout Item Styling */
+.logout-item {
+  color: #dc3545 !important;
+  font-weight: bold;
+}
+
+.logout-item:hover {
+  background-color: #ffe6e6 !important;
 }
