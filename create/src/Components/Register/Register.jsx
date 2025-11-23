@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Register.css";
-import budget_icon from '../Assets/budget.png';
+import budget_icon from '../Assets/budget_app_figma_logo.png';
 import { useNavigate } from "react-router-dom";
 
 const initialState = {

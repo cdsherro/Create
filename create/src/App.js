@@ -1,4 +1,3 @@
-// src/App.js
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
@@ -10,6 +9,7 @@ import Profile from "./Components/Profile/Profile";
 import Register from "./Components/Register/Register";
 import AccountSettings from "./Components/Accounts/AccountSettings"; 
 import TwoStepVerification from "./Components/TwoStep/TwoStep";
+import Transactions from './Components/Transactions/Transactions';
 
 function App() {
   const location = useLocation();
@@ -43,6 +43,9 @@ function App() {
 
         {/* Registration */}
         <Route path="/register" element={<Register />} />
+
+        {/* Transactions */}
+        <Route path="/transactions" element={<Transactions />} />
       </Routes>
     </>
   );

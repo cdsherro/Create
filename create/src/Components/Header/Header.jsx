@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
-import budgetLogo from "../Assets/budget.png";
+import budgetLogo from "../Assets/budget_app_figma_logo.png";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -59,6 +59,13 @@ export default function Header() {
               onClick={() => goTo("/income-management")}
             >
               Income
+            </button>
+            <button
+              type="button"
+              className="dropdown-item"
+              onClick={() => goTo("/transactions")}
+            >
+              Transactions
             </button>
             <button
               type="button"

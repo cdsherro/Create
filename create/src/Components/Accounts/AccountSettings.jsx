@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AccountSettings.css";
-import budgetLogo from "../Assets/budget.png"; 
+import budgetLogo from "../Assets/budget_app_figma_logo.png"; 
 
 function AccountSettings() {
   // toggles

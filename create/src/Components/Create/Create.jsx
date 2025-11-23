@@ -4,7 +4,7 @@ import "./Create.css";
 
 import email_icon from '../Assets/email.jpg'
 import password_icon from '../Assets/password.png'
-import budget_icon from '../Assets/budget.png'
+import budget_icon from '../Assets/budget_app_figma_logo.png'
 
 const Create = () => {
     const navigate = useNavigate();
