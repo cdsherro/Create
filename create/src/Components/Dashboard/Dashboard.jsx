@@ -4,6 +4,9 @@ import SpendingChart from './SpendingChart';
 import BudgetList from './BudgetList';
 import './Dashboard.css';
 
+const BUDGET_TYPES = ['Groceries', 'Rent', 'Utilities', 'Fun'];
+const BUDGET_TEMPLATES = ['Default', 'Monthly Standard', 'Minimalist', 'Family', 'Student'];
+
 export default function Dashboard() {
   const [income] = useState(4500);
   const [expenses] = useState(1200);
@@ -19,14 +22,68 @@ export default function Dashboard() {
     { id: 9, payee: 'Apple', amount: 2.99, date: '2025-10-09' },
   ]);
 
-  // Dummy budgets (temporary frontend data)
+  // Multi-budget state: array of budgets, each with its own categories
   const [budgets, setBudgets] = useState([
-    { id: 1, name: 'Groceries', total: 300, spent: 120 },
-    { id: 2, name: 'Rent', total: 1200, spent: 1200 },
-    { id: 3, name: 'Utilities', total: 200, spent: 150 },
-    { id: 4, name: 'Entertainment', total: 150, spent: 90 }
+    {
+      id: 1,
+      name: 'November 2025 Budget',
+      categories: [
+        { name: 'Rent', amount: 2250, percent: 50 },
+        { name: 'Groceries', amount: 450, percent: 10 },
+      ],
+    },
+    {
+      id: 2,
+      name: 'Vacation Budget',
+      categories: [
+        { name: 'Hotels', amount: 900, percent: 40 },
+        { name: 'Food', amount: 300, percent: 14 },
+      ],
+    },
   ]);
-  const [selectedBudget, setSelectedBudget] = useState(1);
+
+  const [selectedBudgetId, setSelectedBudgetId] = useState(budgets[0]?.id ?? null);
+  const selectedBudget = budgets.find(b => b.id === selectedBudgetId);
+
+  // Add Budget Modal state
+  const [showBudgetModal, setShowBudgetModal] = useState(false);
+  const [budgetName, setBudgetName] = useState('');
+  const [categories, setCategories] = useState([
+    { name: '', amount: 0, percent: 0 }
+  ]);
+
+  // Handlers for category editing in modal:
+  const handleCategoryChange = (idx, field, value) => {
+    setCategories(prev =>
+      prev.map((cat, i) => i === idx ? { ...cat, [field]: value } : cat)
+    );
+  };
+  const addCategory = () => setCategories([...categories, { name: "", amount: 0, percent: 0 }]);
+  const removeCategory = idx => setCategories(categories.filter((_, i) => i !== idx));
+
+  // Modal for Add Transaction
+  const [showTransactionModal, setShowTransactionModal] = useState(false);
+  const [file, setFile] = useState(null);
+
+  // Save Budget handler 
+  const handleSaveBudget = (e) => {
+    e.preventDefault();
+    if (!budgetName.trim()) return;
+    const newBudget = {
+      id: budgets.length + 1,
+      name: budgetName,
+      categories: categories.map(cat => ({
+        name: cat.name,
+        amount: Number(cat.amount),
+        percent: Number(cat.percent)
+      }))
+    };
+    setBudgets([...budgets, newBudget]);
+    setBudgetName('');
+    setCategories([{ name: '', amount: 0, percent: 0 }]);
+    setShowBudgetModal(false);
+    setSelectedBudgetId(newBudget.id);
+  };
 
   return (
     <div className="dashboard-container">
@@ -41,75 +98,154 @@ export default function Dashboard() {
         </div>
         <button
           className="add-transaction"
-          data-bs-toggle="modal"
-          data-bs-target="#addTransactionModal"
+          onClick={() => setShowTransactionModal(true)}
         >
           Add New Transaction
         </button>
+        {/* Budget selection dropdown and Add Budget button */}
+        <div className="budget-add-container">
+          <select
+            className="select-budget"
+            value={selectedBudgetId}
+            onChange={e => setSelectedBudgetId(Number(e.target.value))}
+            style={{ marginRight: '10px' }}
+          >
+            {budgets.map(budget => (
+              <option value={budget.id} key={budget.id}>{budget.name}</option>
+            ))}
+          </select>
+          <button
+            className="add-budget-btn"
+            onClick={() => setShowBudgetModal(true)}
+          >
+            Add Budget
+          </button>
+        </div>
       </div>
 
       <div className="bottom-section">
         <div className="transactions-container">
           <RecentTransactions items={recent} />
         </div>
-
         <div className="chart-container">
           <SpendingChart />
           <BudgetList
-            budgets={budgets}
-            selectedBudget={selectedBudget}
-            onSelectBudget={setSelectedBudget}
+            budgets={selectedBudget ? selectedBudget.categories : []}
+            selectedBudget={null}
+            onSelectBudget={() => {}} 
           />
         </div>
       </div>
 
-      {/* Modal */}
-      <div
-        className="modal fade"
-        id="addTransactionModal"
-        tabIndex="-1"
-        aria-labelledby="addTransactionModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="addTransactionModalLabel">
-                Add New Transaction
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+      {/* Modal for Add Transaction */}
+      {showTransactionModal && (
+        <div className="custom-modal">
+          <div className="custom-modal-content">
+            <div className="custom-modal-header">
+              <h5>Add New Transaction</h5>
+              <button className="custom-modal-close" onClick={() => setShowTransactionModal(false)}>×</button>
             </div>
-            <div className="modal-body">
-              <form>
-                <div className="mb-3">
-                  <label className="form-label">Payee</label>
-                  <input type="text" className="form-control" placeholder="e.g. Amazon" />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Amount</label>
-                  <input type="number" className="form-control" placeholder="e.g. 25.00" />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Date</label>
-                  <input type="date" className="form-control" />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Notes</label>
-                  <textarea className="form-control" rows="2" placeholder="Optional"></textarea>
-                </div>
-                <button type="submit" className="btn btn-success w-100">
-                  Save Transaction
-                </button>
-              </form>
-            </div>
+            <form>
+              <div className="mb-3">
+                <label className="form-label">Payee</label>
+                <input type="text" className="form-control" placeholder="e.g. Amazon" />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Amount</label>
+                <input type="number" className="form-control" placeholder="e.g. 25.00" />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Date</label>
+                <input type="date" className="form-control" />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Notes</label>
+                <textarea className="form-control" rows="2" placeholder="Optional"></textarea>
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Upload File/Image (optional)</label>
+                <input
+                  type="file"
+                  className="form-control"
+                  onChange={e => setFile(e.target.files[0])}
+                />
+                {file && <div className="mt-2">File selected: {file.name}</div>}
+              </div>
+              <button type="submit" className="btn btn-success w-100">Save Transaction</button>
+            </form>
           </div>
         </div>
-      </div>
+      )}
+
+      {/* Modal for Add Budget */}
+      {showBudgetModal && (
+        <div className="custom-modal">
+          <div className="custom-modal-content">
+            <div className="custom-modal-header">
+              <h5>Add Budget</h5>
+              <button className="custom-modal-close" onClick={() => setShowBudgetModal(false)}>×</button>
+            </div>
+            <form onSubmit={handleSaveBudget}>
+              <div className="mb-3">
+                <label className="form-label">Budget Name</label>
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  value={budgetName} 
+                  onChange={e => setBudgetName(e.target.value)} 
+                  placeholder="e.g. November 2025 Budget"
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Add to Budget</label>
+                <select className="form-control">
+                  <option value="all">All Budgets</option>
+                  {budgets.map(budget => (
+                    <option key={budget.id} value={budget.id}>{budget.name}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="category-headers">
+                <span>Category Name</span>
+                <span>Amount</span>
+                <span>Percent</span>
+                <span></span>
+              </div>
+
+              {categories.map((cat, idx) => (
+                <div className="category-row" key={idx}>
+                  <input 
+                    type="text" 
+                    placeholder="e.g. Rent" 
+                    value={cat.name} 
+                    onChange={e => handleCategoryChange(idx, 'name', e.target.value)} 
+                  />
+                  <input 
+                    type="number" 
+                    placeholder="e.g. 1200" 
+                    value={cat.amount} 
+                    onChange={e => handleCategoryChange(idx, 'amount', e.target.value)} 
+                  />
+                  <input 
+                    type="number" 
+                    placeholder="e.g. 50" 
+                    value={cat.percent} 
+                    onChange={e => handleCategoryChange(idx, 'percent', e.target.value)} 
+                    min={0} 
+                    max={100} 
+                  />
+                  <button type="button" onClick={() => removeCategory(idx)}>–</button>
+                </div>
+              ))}
+              <button type="button" onClick={addCategory} style={{ marginBottom: '10px' }}>+ Add Category</button>
+              <button type="submit" className="btn btn-success w-100">Save Budget</button>
+            </form>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
