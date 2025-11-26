@@ -18,11 +18,10 @@ export default function Dashboard() {
     { id: 5, payee: 'Amazon', amount: 9.99, date: '2025-10-05' },
     { id: 6, payee: 'Target', amount: 27.5, date: '2025-10-06' },
     { id: 7, payee: 'Netflix', amount: 15.49, date: '2025-10-07' },
-    { id: 8, payee: 'Domino’s', amount: 20.0, date: '2025-10-08' },
+    { id: 8, payee: "Domino's", amount: 20.0, date: '2025-10-08' },
     { id: 9, payee: 'Apple', amount: 2.99, date: '2025-10-09' },
   ]);
 
-  // Multi-budget state: array of budgets, each with its own categories
   const [budgets, setBudgets] = useState([
     {
       id: 1,
@@ -45,14 +44,12 @@ export default function Dashboard() {
   const [selectedBudgetId, setSelectedBudgetId] = useState(budgets[0]?.id ?? null);
   const selectedBudget = budgets.find(b => b.id === selectedBudgetId);
 
-  // Add Budget Modal state
   const [showBudgetModal, setShowBudgetModal] = useState(false);
   const [budgetName, setBudgetName] = useState('');
   const [categories, setCategories] = useState([
     { name: '', amount: 0, percent: 0 }
   ]);
 
-  // Handlers for category editing in modal:
   const handleCategoryChange = (idx, field, value) => {
     setCategories(prev =>
       prev.map((cat, i) => i === idx ? { ...cat, [field]: value } : cat)
@@ -61,11 +58,9 @@ export default function Dashboard() {
   const addCategory = () => setCategories([...categories, { name: "", amount: 0, percent: 0 }]);
   const removeCategory = idx => setCategories(categories.filter((_, i) => i !== idx));
 
-  // Modal for Add Transaction
   const [showTransactionModal, setShowTransactionModal] = useState(false);
   const [file, setFile] = useState(null);
 
-  // Save Budget handler 
   const handleSaveBudget = (e) => {
     e.preventDefault();
     if (!budgetName.trim()) return;
@@ -102,7 +97,6 @@ export default function Dashboard() {
         >
           Add New Transaction
         </button>
-        {/* Budget selection dropdown and Add Budget button */}
         <div className="budget-add-container">
           <select
             className="select-budget"
@@ -125,7 +119,7 @@ export default function Dashboard() {
 
       <div className="bottom-section">
         <div className="transactions-container">
-          <RecentTransactions items={recent} />
+          <RecentTransactions items={recent} budgets={budgets} />
         </div>
         <div className="chart-container">
           <SpendingChart />
@@ -158,6 +152,18 @@ export default function Dashboard() {
                 <label className="form-label">Date</label>
                 <input type="date" className="form-control" />
               </div>
+              
+              <div className="mb-3">
+                <label className="form-label">Add to Budget *</label>
+                <select className="form-control" required>
+                  <option value="">Select budget...</option>
+                  <option value="all">All Budgets</option>
+                  {budgets.map(budget => (
+                    <option key={budget.id} value={budget.id}>{budget.name}</option>
+                  ))}
+                </select>
+              </div>
+
               <div className="mb-3">
                 <label className="form-label">Notes</label>
                 <textarea className="form-control" rows="2" placeholder="Optional"></textarea>
@@ -177,7 +183,7 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* Modal for Add Budget */}
+      {/* Modal for Add Budget*/}
       {showBudgetModal && (
         <div className="custom-modal">
           <div className="custom-modal-content">
@@ -195,16 +201,6 @@ export default function Dashboard() {
                   onChange={e => setBudgetName(e.target.value)} 
                   placeholder="e.g. November 2025 Budget"
                 />
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Add to Budget</label>
-                <select className="form-control">
-                  <option value="all">All Budgets</option>
-                  {budgets.map(budget => (
-                    <option key={budget.id} value={budget.id}>{budget.name}</option>
-                  ))}
-                </select>
               </div>
 
               <div className="category-headers">
@@ -245,7 +241,6 @@ export default function Dashboard() {
           </div>
         </div>
       )}
-
     </div>
   );
 }
