@@ -10,11 +10,17 @@ const Create = () => {
     const navigate = useNavigate();
 
     const handleSubmit = () => {
-        navigate("/verify"); 
+        // after login, go to 2-step verification
+        navigate("/verify");
     };
 
     const handleRegister = () => {
         navigate("/register"); 
+    };
+
+    // ✅ NEW: forgot-password handler
+    const handleForgotPassword = () => {
+        navigate("/forgot-password");
     };
 
     return (
@@ -48,7 +54,13 @@ const Create = () => {
 
                 <div className="forgot-password">
                     Forgot Password?{" "}
-                    <button className="link" type="button">CLICK HERE!</button>
+                    <button
+                        className="link"
+                        type="button"
+                        onClick={handleForgotPassword}   // ✅ make CLICK HERE go to forgot page
+                    >
+                        CLICK HERE!
+                    </button>
                 </div>
 
                 <div className="submit-container">
@@ -65,7 +77,6 @@ const Create = () => {
                 </div>
             </div>
 
-               
             <aside className="auth-right">
                 <strong>Welcome! To Task Failed Successfully Budget App.</strong>
             </aside>

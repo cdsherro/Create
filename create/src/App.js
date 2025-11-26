@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
 
 import Header from "./Components/Header/Header";
 import Create from "./Components/Create/Create";
@@ -26,7 +27,11 @@ function App() {
         {/* Login / Create as default page */}
         <Route path="/" element={<Create />} />
         <Route path="/create" element={<Create />} />
-
+       
+        {/*forgot password */}
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        
+        {/*two step verify */}
         <Route path="/verify" element={<TwoStepVerification />} />
 
         {/* Dashboard after login */}

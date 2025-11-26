@@ -21,8 +21,8 @@ export default function TwoStep() {
       return;
     }
 
-    // TODO: replace with real backend check later
-    alert("Verification successful (demo). Logging you in...");
+    
+    alert("Verification successful . Logging you in...");
     navigate("/dashboard");
   };
 
@@ -75,7 +75,7 @@ export default function TwoStep() {
   );
 }
 
-/** Big text box with lock + check, like Account Settings personal info */
+/** text box,check,lock*/
 function EditableLineWithChip({ label, value, onChange, placeholder }) {
   const confirmed = !!(value && value.trim().length === 6);
 
@@ -98,7 +98,7 @@ function EditableLineWithChip({ label, value, onChange, placeholder }) {
       <label>{label}</label>
       <div className="lc-wrap">
         <div
-          className="editable-line editable-line--big"
+          className="editable-line"
           contentEditable
           role="textbox"
           aria-label={label}

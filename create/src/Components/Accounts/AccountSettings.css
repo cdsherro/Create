@@ -1,7 +1,7 @@
 * { box-sizing: border-box; }
 mark { background: #A8FFD5; color: inherit; padding: .05em .2em; border-radius: .2em; }
 
-/* Page wrapper */
+/* main page content */
 .settings {
   min-height: 100vh;
   background: #E0FDFF;
@@ -20,13 +20,13 @@ mark { background: #A8FFD5; color: inherit; padding: .05em .2em; border-radius: 
   box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
-/* Header */
+/* Header section */
 .settings-header { display: flex; align-items: center; gap: 14px; }
 .settings-header h1 { margin: 0; font-size: 40px; font-weight: 800; color: #000; }
 .settings-logo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; box-shadow: 0 6px 16px rgba(0,0,0,.15); }
 .highlight { width: 120px; height: 8px; border-radius: 999px; background: #00c2a8; margin: 12px 0 20px; }
 
-/* Grid */
+/* Grid columns */
 .settings-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(380px, 1fr));

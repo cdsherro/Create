@@ -15,14 +15,14 @@ export default function Header() {
   };
 
   const handleLogout = () => {
-    // send user back to login/create page
+    // goes back to login page
     navigate("/create");
     setOpen(false);
   };
 
   return (
     <header className="app-header">
-      {/* LEFT: logo + text (kept) */}
+      {/* logo and text */}
       <div className="header-left" onClick={() => goTo("/dashboard")}>
         <img
           src={budgetLogo}
@@ -34,7 +34,7 @@ export default function Header() {
         </span>
       </div>
 
-      {/* RIGHT: clickable dropdown menu */}
+      {/*  dropdown menu */}
       <div className="header-right">
         <button
           type="button"
@@ -82,7 +82,7 @@ export default function Header() {
               Profile
             </button>
 
-            {/* ✅ LOG OUT HERE – NO REGISTER */}
+            {/* log out*/}
             <button
               type="button"
               className="dropdown-item logout-item"
