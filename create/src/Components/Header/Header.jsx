@@ -74,13 +74,6 @@ export default function Header() {
             >
               Account
             </button>
-            <button
-              type="button"
-              className="dropdown-item"
-              onClick={() => goTo("/profile")}
-            >
-              Profile
-            </button>
 
             {/* log out*/}
             <button
