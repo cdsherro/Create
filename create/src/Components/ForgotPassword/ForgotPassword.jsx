@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ForgotPassword.css";
-import budget_icon from "../Assets/budget.png";
+import budget_icon from "../Assets/budget_app_figma_logo.png";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");

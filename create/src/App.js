@@ -6,11 +6,11 @@ import Header from "./Components/Header/Header";
 import Create from "./Components/Create/Create";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import IncomeManagement from "./Components/IncomeManagement/IncomeManagement";
-import Profile from "./Components/Profile/Profile";
 import Register from "./Components/Register/Register";
 import AccountSettings from "./Components/Accounts/AccountSettings"; 
 import TwoStepVerification from "./Components/TwoStep/TwoStep";
 import Transactions from './Components/Transactions/Transactions';
+import Chatbot from "./Components/Chatbot/chatbot";
 
 function App() {
   const location = useLocation();
@@ -43,15 +43,13 @@ function App() {
         {/* Account settings */}
         <Route path="/account" element={<AccountSettings />} />
 
-        {/* Profile */}
-        <Route path="/profile" element={<Profile />} />
-
         {/* Registration */}
         <Route path="/register" element={<Register />} />
 
         {/* Transactions */}
         <Route path="/transactions" element={<Transactions />} />
       </Routes>
+      <Chatbot/>
     </>
   );
 }

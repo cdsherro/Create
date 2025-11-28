@@ -38,15 +38,22 @@
   align-self: center;
 }
 
-.budget-add-container {
+.budget-add-container-top {
   display: flex;
   gap: 10px;
   align-items: center;
+  margin-left: 35px;
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
 
-.add-budget-btn {
-  padding: 10px 18px;
-  font-size: 1.1rem;
+.select-budget {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #000;
+  border-radius: 7px;
+  min-width: 200px;
+  height: 62px;
 }
 
 .custom-modal {

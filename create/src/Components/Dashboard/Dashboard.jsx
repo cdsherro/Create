@@ -82,6 +82,24 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
+      <div className="budget-add-container-top">
+        <select
+          className="select-budget"
+          value={selectedBudgetId}
+          onChange={e => setSelectedBudgetId(Number(e.target.value))}
+        >
+          {budgets.map(budget => (
+            <option value={budget.id} key={budget.id}>{budget.name}</option>
+          ))}
+        </select>
+        <button
+          className="add-budget-btn"
+          onClick={() => setShowBudgetModal(true)}
+        >
+          Add Budget
+        </button>
+      </div>
+
       <div className="cards-row">
         <div className="card large-card">
           <h5>Current Income (MTD)</h5>
@@ -97,24 +115,6 @@ export default function Dashboard() {
         >
           Add New Transaction
         </button>
-        <div className="budget-add-container">
-          <select
-            className="select-budget"
-            value={selectedBudgetId}
-            onChange={e => setSelectedBudgetId(Number(e.target.value))}
-            style={{ marginRight: '10px' }}
-          >
-            {budgets.map(budget => (
-              <option value={budget.id} key={budget.id}>{budget.name}</option>
-            ))}
-          </select>
-          <button
-            className="add-budget-btn"
-            onClick={() => setShowBudgetModal(true)}
-          >
-            Add Budget
-          </button>
-        </div>
       </div>
 
       <div className="bottom-section">
